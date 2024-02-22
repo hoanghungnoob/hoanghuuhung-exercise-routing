@@ -60,9 +60,9 @@ Route::prefix('/user')->group(function(){
         $post = $user['posts'][$postIndex];
         return "$post";
     })->where(['userIndex' => '[0-9]+', 'postIndex' => '[0-9]+']);
+    // Fallback route khi nhận request sai
+    Route::fallback(function () {
+        return "You cannot get a user like this";
+    });
     
-});
-// Fallback route khi nhận request sai
-Route::fallback(function () {
-    return "You cannot get a user like this";
 });
